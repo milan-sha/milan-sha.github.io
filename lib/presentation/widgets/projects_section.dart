@@ -89,19 +89,26 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                 if (_isVisible) ...[
                   _buildFilterTabs(isMobile),
                   const SizedBox(height: 60),
-                  Wrap(
-                    spacing: 30,
-                    runSpacing: 30,
-                    children: List.generate(filteredProjects.length, (index) {
-                      return SizedBox(
-                        width: isMobile ? double.infinity : (MediaQuery.of(context).size.width - 230) / 2,
-                        child: AnimatedProjectCard(
-                          index: index,
-                          category: _selectedCategory,
-                          child: _buildProjectCard(filteredProjects[index], index, isMobile),
-                        ),
+                  LayoutBuilder(
+                    builder: (context, constraints) {
+                      // Calculate width exactly based on available space minus the spacing between cards
+                      double cardWidth = isMobile ? double.infinity : (constraints.maxWidth - 30) / 2;
+                      
+                      return Wrap(
+                        spacing: 30,
+                        runSpacing: 30,
+                        children: List.generate(filteredProjects.length, (index) {
+                          return SizedBox(
+                            width: cardWidth,
+                            child: AnimatedProjectCard(
+                              index: index,
+                              category: _selectedCategory,
+                              child: _buildProjectCard(filteredProjects[index], index, isMobile),
+                            ),
+                          );
+                        }),
                       );
-                    }),
+                    },
                   ),
                 ],
               ],
