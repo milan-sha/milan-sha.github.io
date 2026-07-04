@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../core/theme/app_colors.dart';
 import '../widgets/hero_section.dart';
 import '../widgets/about_section.dart';
 import '../widgets/skills_section.dart';
@@ -55,14 +56,24 @@ class _HomePageState extends State<HomePage> {
           // Background
           Positioned.fill(
             child: Container(
-              decoration: const BoxDecoration(
-                gradient: RadialGradient(
-                  center: Alignment.topLeft,
-                  radius: 1.5,
-                  colors: [
-                    Color(0xFF13151D),
-                    Color(0xFF0A0B10),
-                  ],
+              decoration: BoxDecoration(
+                color: AppColors.background,
+                image: const DecorationImage(
+                  image: NetworkImage('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop'),
+                  fit: BoxFit.cover,
+                  colorFilter: ColorFilter.mode(Colors.black54, BlendMode.darken),
+                ),
+              ),
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      AppColors.background.withOpacity(0.7),
+                      AppColors.background.withOpacity(0.95),
+                    ],
+                  ),
                 ),
               ),
             ),

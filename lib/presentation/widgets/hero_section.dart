@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_colors.dart';
 
 class HeroSection extends StatelessWidget {
   const HeroSection({super.key});
@@ -32,7 +32,7 @@ class HeroSection extends StatelessWidget {
               
               const SizedBox(height: 20),
               
-              Row(
+              Wrap(
                 children: [
                   Text(
                     "I am a ",
