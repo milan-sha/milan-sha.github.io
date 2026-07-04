@@ -24,42 +24,36 @@ class _ProjectsSectionState extends State<ProjectsSection> {
       'category': 'Flutter',
       'description': 'A comprehensive dental clinic application to manage staff and medical equipments.',
       'techStack': ['Flutter', 'Dart', 'Firebase'],
-      'image': 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
     },
     {
       'title': 'E-commerce App',
       'category': 'Flutter',
       'description': 'A full-featured e-commerce application with product catalog, shopping cart, and secure checkout.',
       'techStack': ['Flutter', 'Dart', 'Hive', 'State Management'],
-      'image': 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
     },
     {
       'title': 'Password Strength Checker',
       'category': 'Cybersecurity',
       'description': 'An application that evaluates password strength and checks against known breached password databases.',
       'techStack': ['Cybersecurity', 'Security Assessment'],
-      'image': 'https://images.unsplash.com/photo-1614064641913-6b110b471978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
     },
     {
       'title': 'Paper Cups Website PenTest',
       'category': 'Cybersecurity',
       'description': 'Conducted a comprehensive vulnerability assessment and penetration test for a paper cups and materials manufacturing website.',
       'techStack': ['Pen Testing', 'Vulnerability Assessment', 'OWASP'],
-      'image': 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
     },
     {
       'title': 'WiFi People Locating',
       'category': 'Fun Projects',
       'description': 'A fun experimental project utilizing WiFi signals and network packets to estimate people locations in a localized area.',
       'techStack': ['Network Analysis', 'Python', 'WiFi Locating'],
-      'image': 'https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
     },
     {
       'title': 'Enterprise Company Projects',
       'category': '.NET',
       'description': 'Developed and maintained various enterprise-level company projects using ASP.NET Core and related technologies.',
       'techStack': ['ASP.NET Core', 'C#', 'SQL Server'],
-      'image': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
     },
   ];
 
@@ -95,17 +89,18 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                 if (_isVisible) ...[
                   _buildFilterTabs(isMobile),
                   const SizedBox(height: 60),
-                  ListView.separated(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: filteredProjects.length,
-                    separatorBuilder: (context, index) => const SizedBox(height: 80),
-                    itemBuilder: (context, index) {
-                      return _buildProjectCard(filteredProjects[index], index, isMobile)
-                          .animate(key: ValueKey('${_selectedCategory}_$index'))
-                          .fade(duration: 600.ms, delay: (200 * index).ms)
-                          .slideY(begin: 0.1, end: 0);
-                    },
+                  Wrap(
+                    spacing: 30,
+                    runSpacing: 30,
+                    children: List.generate(filteredProjects.length, (index) {
+                      return SizedBox(
+                        width: isMobile ? double.infinity : (MediaQuery.of(context).size.width - 230) / 2,
+                        child: _buildProjectCard(filteredProjects[index], index, isMobile)
+                            .animate(key: ValueKey('${_selectedCategory}_$index'))
+                            .fade(duration: 600.ms, delay: (100 * index).ms)
+                            .slideY(begin: 0.1, end: 0),
+                      );
+                    }),
                   ),
                 ],
               ],
@@ -180,157 +175,143 @@ class _ProjectsSectionState extends State<ProjectsSection> {
     );
   }
 
+
   Widget _buildProjectCard(Map<String, dynamic> project, int index, bool isMobile) {
-    bool isEven = index % 2 == 0;
+    // Generate colors based on category
+    Color primaryGradientColor;
+    Color secondaryGradientColor;
     
-    if (isMobile) {
-      return _buildMobileProjectCard(project);
+    switch (project['category']) {
+      case 'Flutter':
+        primaryGradientColor = Colors.blue.shade900.withOpacity(0.7);
+        secondaryGradientColor = Colors.blue.shade500.withOpacity(0.5);
+        break;
+      case 'Cybersecurity':
+        primaryGradientColor = Colors.red.shade900.withOpacity(0.7);
+        secondaryGradientColor = Colors.orange.shade700.withOpacity(0.5);
+        break;
+      case '.NET':
+        primaryGradientColor = Colors.purple.shade900.withOpacity(0.7);
+        secondaryGradientColor = Colors.deepPurple.shade500.withOpacity(0.5);
+        break;
+      default:
+        primaryGradientColor = Colors.green.shade900.withOpacity(0.7);
+        secondaryGradientColor = Colors.teal.shade500.withOpacity(0.5);
     }
-    
-    return SizedBox(
-      height: 450,
-      child: Stack(
-        children: [
-          // Image
-          Positioned(
-            left: isEven ? 0 : null,
-            right: isEven ? null : 0,
-            top: 0,
-            bottom: 0,
-            width: MediaQuery.of(context).size.width * 0.45,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(16),
-              child: Container(
-                color: AppColors.surface,
-                child: Image.network(
-                  project['image'],
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) => const Center(
-                    child: Icon(Icons.image, size: 50, color: AppColors.surfaceLight),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          
-          // Content Card
-          Positioned(
-            left: isEven ? null : 0,
-            right: isEven ? 0 : null,
-            top: 40,
-            bottom: 40,
-            width: MediaQuery.of(context).size.width * 0.45,
-            child: Container(
-              padding: const EdgeInsets.all(40),
-              decoration: BoxDecoration(
-                color: AppColors.surface.withOpacity(0.95),
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: AppColors.surfaceLight),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.3),
-                    blurRadius: 20,
-                    offset: const Offset(0, 10),
-                  ),
-                ],
-              ),
-              child: _buildProjectContent(project, CrossAxisAlignment.start),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-  
-  Widget _buildMobileProjectCard(Map<String, dynamic> project) {
+
     return Container(
+      constraints: const BoxConstraints(minHeight: 350),
       decoration: BoxDecoration(
-        color: AppColors.surface,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.surfaceLight),
-      ),
-      clipBehavior: Clip.antiAlias,
-      child: Column(
-        children: [
-          SizedBox(
-            height: 250,
-            width: double.infinity,
-            child: Image.network(
-              project['image'],
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) => const Center(
-                child: Icon(Icons.image, size: 50, color: AppColors.surfaceLight),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(24),
-            child: _buildProjectContent(project, CrossAxisAlignment.start),
-          ),
-        ],
-      ),
-    );
-  }
-  
-  Widget _buildProjectContent(Map<String, dynamic> project, CrossAxisAlignment alignment) {
-    return Column(
-      crossAxisAlignment: alignment,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          project['category'],
-          style: const TextStyle(
-            color: AppColors.accent,
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
-            letterSpacing: 2,
-          ),
-        ),
-        const SizedBox(height: 12),
-        Text(
-          project['title'],
-          style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-            fontSize: 28,
-          ),
-        ),
-        const SizedBox(height: 20),
-        Text(
-          project['description'],
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-            height: 1.6,
-            color: AppColors.textSecondary,
-          ),
-          textAlign: alignment == CrossAxisAlignment.end ? TextAlign.right : TextAlign.left,
-        ),
-        const SizedBox(height: 24),
-        Wrap(
-          spacing: 12,
-          runSpacing: 12,
-          alignment: alignment == CrossAxisAlignment.end ? WrapAlignment.end : WrapAlignment.start,
-          children: (project['techStack'] as List<String>).map((tech) {
-            return Text(
-              tech,
-              style: const TextStyle(
-                color: AppColors.primary,
-                fontWeight: FontWeight.w600,
-                fontSize: 14,
-              ),
-            );
-          }).toList(),
-        ),
-        const Spacer(),
-        Row(
-          mainAxisAlignment: alignment == CrossAxisAlignment.end ? MainAxisAlignment.end : MainAxisAlignment.start,
-          children: [
-            if (project['github'] != null)
-              IconButton(
-                onPressed: () => launchUrl(Uri.parse(project['github'])),
-                icon: const Icon(Icons.code, color: Colors.white),
-                tooltip: 'View Source Code',
-              ),
+        borderRadius: BorderRadius.circular(24),
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            primaryGradientColor,
+            AppColors.surface,
           ],
         ),
-      ],
+        border: Border.all(color: secondaryGradientColor, width: 1),
+        boxShadow: [
+          BoxShadow(
+            color: primaryGradientColor.withOpacity(0.3),
+            blurRadius: 20,
+            offset: const Offset(0, 10),
+          ),
+        ],
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(24),
+        child: BackdropFilter(
+          filter: ColorFilter.mode(Colors.black.withOpacity(0.1), BlendMode.darken),
+          child: Padding(
+            padding: const EdgeInsets.all(40),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      decoration: BoxDecoration(
+                        color: secondaryGradientColor.withOpacity(0.3),
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(color: secondaryGradientColor.withOpacity(0.5)),
+                      ),
+                      child: Text(
+                        project['category'],
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                          letterSpacing: 1.5,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    Text(
+                      project['title'],
+                      style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                        fontSize: isMobile ? 24 : 32,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        height: 1.2,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    Text(
+                      project['description'],
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        height: 1.6,
+                        color: Colors.white.withOpacity(0.8),
+                        fontSize: 16,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 40),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Wrap(
+                      spacing: 12,
+                      runSpacing: 12,
+                      children: (project['techStack'] as List<String>).map((tech) {
+                        return Text(
+                          tech,
+                          style: TextStyle(
+                            color: secondaryGradientColor.withOpacity(0.9),
+                            fontWeight: FontWeight.w800,
+                            fontSize: 15,
+                            letterSpacing: 0.5,
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                    const SizedBox(height: 30),
+                    Row(
+                      children: [
+                        if (project['github'] != null)
+                          IconButton(
+                            onPressed: () => launchUrl(Uri.parse(project['github'])),
+                            icon: const Icon(Icons.code, color: Colors.white),
+                            tooltip: 'View Source Code',
+                            style: IconButton.styleFrom(
+                              backgroundColor: Colors.white.withOpacity(0.1),
+                              padding: const EdgeInsets.all(12),
+                            ),
+                          ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
