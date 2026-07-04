@@ -120,7 +120,7 @@ class _AboutSectionState extends State<AboutSection> {
         ).animate().fade(duration: 800.ms).slideX(begin: -0.2, end: 0),
         const SizedBox(height: 20),
         Text(
-          "I enjoy building scalable, secure, and user-friendly applications that solve real-world problems. I have developed multiple projects across different domains, including mobile applications, backend systems, web applications, database-driven solutions, and AI-based projects.",
+          "I enjoy building scalable, secure, and user-friendly applications that solve real-world problems. I have developed multiple projects across different domains, including mobile applications, backend systems, web applications, and database-driven solutions.",
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(height: 1.6),
         ).animate().fade(delay: 300.ms).slideY(begin: 0.1, end: 0),
         const SizedBox(height: 20),
@@ -130,7 +130,7 @@ class _AboutSectionState extends State<AboutSection> {
         ).animate().fade(delay: 400.ms).slideY(begin: 0.1, end: 0),
         const SizedBox(height: 20),
         Text(
-          "I also have experience using Python for automation, artificial intelligence, and machine learning projects.",
+          "I also have experience using Python for automation and scripting projects.",
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(height: 1.6),
         ).animate().fade(delay: 500.ms).slideY(begin: 0.1, end: 0),
         const SizedBox(height: 20),

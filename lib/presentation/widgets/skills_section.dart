@@ -40,12 +40,6 @@ class _SkillsSectionState extends State<SkillsSection> {
       'color': Colors.redAccent,
     },
     {
-      'title': 'Artificial Intelligence',
-      'icon': Icons.psychology,
-      'skills': ['Python', 'Machine Learning', 'AI Fundamentals', 'NumPy', 'Pandas', 'Scikit-learn'],
-      'color': AppColors.accent,
-    },
-    {
       'title': 'Tools',
       'icon': Icons.build,
       'skills': ['Git', 'GitHub', 'VS Code', 'Visual Studio', 'Android Studio', 'Figma', 'Postman'],

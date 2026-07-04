@@ -18,7 +18,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
   bool _isVisible = false;
   String _selectedCategory = 'All';
 
-  final List<String> _categories = ['All', 'Flutter', '.NET', 'Cybersecurity', 'Fun Projects', 'AI'];
+  final List<String> _categories = ['All', 'Flutter', '.NET', 'Cybersecurity', 'Fun Projects'];
 
   final List<Map<String, dynamic>> _projects = [
     {
@@ -62,13 +62,6 @@ class _ProjectsSectionState extends State<ProjectsSection> {
       'description': 'Developed and maintained various enterprise-level company projects using ASP.NET Core and related technologies.',
       'techStack': ['ASP.NET Core', 'C#', 'SQL Server'],
       'image': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
-    },
-    {
-      'title': 'Intelligent AI Chatbot',
-      'category': 'AI',
-      'description': 'An intelligent chatbot powered by natural language processing to assist users with automated responses and conversational AI.',
-      'techStack': ['Python', 'NLP', 'AI', 'Machine Learning'],
-      'image': 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
     },
   ];
 

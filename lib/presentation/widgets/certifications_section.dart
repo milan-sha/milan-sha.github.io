@@ -33,12 +33,6 @@ class _CertificationsSectionState extends State<CertificationsSection> {
       'icon': Icons.desktop_windows,
       'color': AppColors.secondary,
     },
-    {
-      'title': 'AI & Machine Learning',
-      'issuer': 'Coursera',
-      'icon': Icons.psychology,
-      'color': AppColors.accent,
-    },
   ];
 
   @override

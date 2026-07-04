@@ -61,7 +61,6 @@ class HeroSection extends StatelessWidget {
                         TypewriterAnimatedText('Flutter Developer', speed: const Duration(milliseconds: 100)),
                         TypewriterAnimatedText('.NET Developer', speed: const Duration(milliseconds: 100)),
                         TypewriterAnimatedText('Certified Ethical Hacker (CEH)', speed: const Duration(milliseconds: 100)),
-                        TypewriterAnimatedText('AI Enthusiast', speed: const Duration(milliseconds: 100)),
                       ],
                       repeatForever: true,
                       pause: const Duration(milliseconds: 1000),
@@ -84,7 +83,7 @@ class HeroSection extends StatelessWidget {
               SizedBox(
                 width: isMobile ? double.infinity : 600,
                 child: Text(
-                  "// I build scalable, secure, and user-friendly applications that solve real-world problems. With expertise spanning mobile, backend, cybersecurity, and AI, I turn ideas into impactful software.",
+                  "// I build scalable, secure, and user-friendly applications that solve real-world problems. With expertise spanning mobile, backend, and cybersecurity, I turn ideas into impactful software.",
                   style: GoogleFonts.firaCode(
                     textStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       height: 1.6,
