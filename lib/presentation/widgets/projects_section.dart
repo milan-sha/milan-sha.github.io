@@ -95,10 +95,11 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                     children: List.generate(filteredProjects.length, (index) {
                       return SizedBox(
                         width: isMobile ? double.infinity : (MediaQuery.of(context).size.width - 230) / 2,
-                        child: _buildProjectCard(filteredProjects[index], index, isMobile)
-                            .animate(key: ValueKey('${_selectedCategory}_$index'))
-                            .fade(duration: 600.ms, delay: (100 * index).ms)
-                            .slideY(begin: 0.1, end: 0),
+                        child: AnimatedProjectCard(
+                          index: index,
+                          category: _selectedCategory,
+                          child: _buildProjectCard(filteredProjects[index], index, isMobile),
+                        ),
                       );
                     }),
                   ),
@@ -312,6 +313,49 @@ class _ProjectsSectionState extends State<ProjectsSection> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class AnimatedProjectCard extends StatefulWidget {
+  final Widget child;
+  final int index;
+  final String category;
+  
+  const AnimatedProjectCard({
+    super.key, 
+    required this.child, 
+    required this.index, 
+    required this.category,
+  });
+  
+  @override
+  State<AnimatedProjectCard> createState() => _AnimatedProjectCardState();
+}
+
+class _AnimatedProjectCardState extends State<AnimatedProjectCard> {
+  bool _isVisible = false;
+  
+  @override
+  Widget build(BuildContext context) {
+    return VisibilityDetector(
+      key: Key('project_${widget.category}_${widget.index}'),
+      onVisibilityChanged: (info) {
+        if (info.visibleFraction > 0.1 && !_isVisible) {
+          setState(() {
+            _isVisible = true;
+          });
+        }
+      },
+      child: _isVisible 
+          ? widget.child.animate()
+              .fade(duration: 600.ms)
+              .slideX(
+                begin: widget.index % 2 == 0 ? -0.2 : 0.2, 
+                end: 0,
+                curve: Curves.easeOutCubic,
+              )
+          : Opacity(opacity: 0, child: widget.child),
     );
   }
 }
