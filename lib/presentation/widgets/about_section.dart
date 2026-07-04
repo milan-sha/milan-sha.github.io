@@ -147,25 +147,19 @@ class _AboutSectionState extends State<AboutSection> {
       decoration: BoxDecoration(
         color: AppColors.surface,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: AppColors.surfaceLight, width: 2),
+        border: Border.all(color: AppColors.primary.withOpacity(0.5), width: 2),
         boxShadow: [
           BoxShadow(
-            color: AppColors.primary.withOpacity(0.1),
+            color: AppColors.primary.withOpacity(0.2),
             blurRadius: 30,
             spreadRadius: 5,
           ),
         ],
-      ),
-      child: Center(
-        child: Icon(
-          Icons.code,
-          size: 100,
-          color: AppColors.primary.withOpacity(0.5),
+        image: const DecorationImage(
+          image: AssetImage('assets/images/profile.jpg'),
+          fit: BoxFit.cover,
         ),
       ),
-    ).animate(onPlay: (controller) => controller.repeat(reverse: true)).shimmer(
-      duration: 3000.ms,
-      color: AppColors.accent.withOpacity(0.2),
-    );
+    ).animate().fade(duration: 800.ms, delay: 200.ms).scale(begin: const Offset(0.9, 0.9), duration: 800.ms);
   }
 }

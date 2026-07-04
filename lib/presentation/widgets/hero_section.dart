@@ -52,7 +52,7 @@ class HeroSection extends StatelessWidget {
                         TypewriterAnimatedText('Software Engineer', speed: const Duration(milliseconds: 100)),
                         TypewriterAnimatedText('Flutter Developer', speed: const Duration(milliseconds: 100)),
                         TypewriterAnimatedText('.NET Developer', speed: const Duration(milliseconds: 100)),
-                        TypewriterAnimatedText('Cybersecurity Pro (CEH)', speed: const Duration(milliseconds: 100)),
+                        TypewriterAnimatedText('Certified Ethical Hacker (CEH)', speed: const Duration(milliseconds: 100)),
                         TypewriterAnimatedText('AI Enthusiast', speed: const Duration(milliseconds: 100)),
                       ],
                       repeatForever: true,

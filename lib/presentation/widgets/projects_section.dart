@@ -16,32 +16,29 @@ class _ProjectsSectionState extends State<ProjectsSection> {
   bool _isVisible = false;
   String _selectedCategory = 'All';
 
-  final List<String> _categories = ['All', 'Flutter', '.NET', 'Cybersecurity', 'Fun Projects'];
+  final List<String> _categories = ['All', 'Flutter', '.NET', 'Cybersecurity', 'Fun Projects', 'AI'];
 
   final List<Map<String, dynamic>> _projects = [
     {
       'title': 'Smile Dental App',
       'category': 'Flutter',
-      'description': 'A comprehensive dental clinic management and appointment booking application built with Flutter.',
+      'description': 'A comprehensive dental clinic application to manage staff and medical equipments.',
       'techStack': ['Flutter', 'Dart', 'Firebase'],
       'image': 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
-      'github': 'https://github.com/milan-sha',
     },
     {
       'title': 'E-commerce App',
       'category': 'Flutter',
       'description': 'A full-featured e-commerce application with product catalog, shopping cart, and secure checkout.',
-      'techStack': ['Flutter', 'Dart', 'REST API', 'State Management'],
+      'techStack': ['Flutter', 'Dart', 'Hive', 'State Management'],
       'image': 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
-      'github': 'https://github.com/milan-sha',
     },
     {
-      'title': 'Password Checker App',
+      'title': 'Password Strength Checker',
       'category': 'Cybersecurity',
       'description': 'An application that evaluates password strength and checks against known breached password databases.',
       'techStack': ['Cybersecurity', 'Security Assessment'],
       'image': 'https://images.unsplash.com/photo-1614064641913-6b110b471978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
-      'github': 'https://github.com/milan-sha',
     },
     {
       'title': 'Paper Cups Website PenTest',
@@ -49,15 +46,13 @@ class _ProjectsSectionState extends State<ProjectsSection> {
       'description': 'Conducted a comprehensive vulnerability assessment and penetration test for a paper cups and materials manufacturing website.',
       'techStack': ['Pen Testing', 'Vulnerability Assessment', 'OWASP'],
       'image': 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
-      'github': 'https://github.com/milan-sha',
     },
     {
       'title': 'WiFi People Locating',
       'category': 'Fun Projects',
       'description': 'A fun experimental project utilizing WiFi signals and network packets to estimate people locations in a localized area.',
       'techStack': ['Network Analysis', 'Python', 'WiFi Locating'],
-      'image': 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
-      'github': 'https://github.com/milan-sha',
+      'image': 'https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
     },
     {
       'title': 'Enterprise Company Projects',
@@ -65,7 +60,13 @@ class _ProjectsSectionState extends State<ProjectsSection> {
       'description': 'Developed and maintained various enterprise-level company projects using ASP.NET Core and related technologies.',
       'techStack': ['ASP.NET Core', 'C#', 'SQL Server'],
       'image': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
-      'github': 'https://github.com/milan-sha',
+    },
+    {
+      'title': 'Intelligent AI Chatbot',
+      'category': 'AI',
+      'description': 'An intelligent chatbot powered by natural language processing to assist users with automated responses and conversational AI.',
+      'techStack': ['Python', 'NLP', 'AI', 'Machine Learning'],
+      'image': 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
     },
   ];
 
