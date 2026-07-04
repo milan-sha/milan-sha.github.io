@@ -156,7 +156,7 @@ class _AboutSectionState extends State<AboutSection> {
           ),
         ],
         image: const DecorationImage(
-          image: AssetImage('assets/images/profile.jpg'),
+          image: AssetImage('image/milan profile.jpeg'),
           fit: BoxFit.cover,
         ),
       ),
