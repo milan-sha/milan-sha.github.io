@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:visibility_detector/visibility_detector.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 import '../../../core/theme/app_colors.dart';
+import 'terminal_window.dart';
 
 class ProjectsSection extends StatefulWidget {
   const ProjectsSection({super.key});
@@ -129,9 +131,11 @@ class _ProjectsSectionState extends State<ProjectsSection> {
     return Row(
       children: [
         Text(
-          'Featured Projects',
-          style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-            fontSize: isMobile ? 32 : 48,
+          '<Projects />',
+          style: GoogleFonts.firaCode(
+            textStyle: Theme.of(context).textTheme.headlineLarge?.copyWith(
+              fontSize: isMobile ? 32 : 48,
+            ),
           ),
         ),
         const SizedBox(width: 20),
@@ -188,7 +192,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
   }
 
   Widget _buildProjectCard(Map<String, dynamic> project, int index, bool isMobile) {
-    bool isEven = index % 2 == 0;
+    bool isReversed = index % 2 != 0;
     
     if (isMobile) {
       return _buildMobileProjectCard(project);
@@ -196,67 +200,74 @@ class _ProjectsSectionState extends State<ProjectsSection> {
     
     return SizedBox(
       height: 450,
-      child: Stack(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // Image
-          Positioned(
-            left: isEven ? 0 : null,
-            right: isEven ? null : 0,
-            top: 0,
-            bottom: 0,
-            width: MediaQuery.of(context).size.width * 0.45,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(16),
-              child: Container(
-                color: AppColors.surface,
-                child: Image.network(
-                  project['image'],
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) => const Center(
-                    child: Icon(Icons.image, size: 50, color: AppColors.surfaceLight),
+          if (!isReversed)
+            Expanded(
+              flex: 6,
+              child: TerminalWindow(
+                title: '${project['title'].toString().toLowerCase().replaceAll(' ', '_')}.exe',
+                child: Container(
+                  height: 400,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(project['image']),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
-              ),
+              ).animate().fade(delay: 200.ms).slideX(begin: -0.1, end: 0),
             ),
-          ),
           
-          // Content Card
-          Positioned(
-            left: isEven ? null : 0,
-            right: isEven ? 0 : null,
-            top: 40,
-            bottom: 40,
-            width: MediaQuery.of(context).size.width * 0.45,
+          if (!isReversed) const SizedBox(width: 60),
+          
+          Expanded(
+            flex: 5,
             child: Container(
-              padding: const EdgeInsets.all(40),
+              padding: const EdgeInsets.all(32),
               decoration: BoxDecoration(
-                color: AppColors.surface.withOpacity(0.95),
+                color: AppColors.surface,
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(color: AppColors.surfaceLight),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.3),
-                    blurRadius: 20,
+                    color: Colors.black.withValues(alpha: 0.2),
+                    blurRadius: 15,
                     offset: const Offset(0, 10),
                   ),
                 ],
               ),
-              child: _buildProjectContent(project, CrossAxisAlignment.start),
+              child: _buildProjectContent(project, isReversed ? CrossAxisAlignment.start : CrossAxisAlignment.end),
             ),
           ),
+          
+          if (isReversed) const SizedBox(width: 60),
+          
+          if (isReversed)
+            Expanded(
+              flex: 6,
+              child: TerminalWindow(
+                title: '${project['title'].toString().toLowerCase().replaceAll(' ', '_')}.exe',
+                child: Container(
+                  height: 400,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(project['image']),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ).animate().fade(delay: 200.ms).slideX(begin: 0.1, end: 0),
+            ),
         ],
       ),
     );
   }
   
   Widget _buildMobileProjectCard(Map<String, dynamic> project) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.surface,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.surfaceLight),
-      ),
-      clipBehavior: Clip.antiAlias,
+    return TerminalWindow(
+      title: '${project['title'].toString().toLowerCase().replaceAll(' ', '_')}.exe',
       child: Column(
         children: [
           SizedBox(
@@ -286,26 +297,32 @@ class _ProjectsSectionState extends State<ProjectsSection> {
       children: [
         Text(
           project['category'],
-          style: const TextStyle(
-            color: AppColors.accent,
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
-            letterSpacing: 2,
+          style: GoogleFonts.firaCode(
+            textStyle: const TextStyle(
+              color: AppColors.accent,
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+              letterSpacing: 2,
+            ),
           ),
         ),
         const SizedBox(height: 12),
         Text(
           project['title'],
-          style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-            fontSize: 28,
+          style: GoogleFonts.firaCode(
+            textStyle: Theme.of(context).textTheme.headlineLarge?.copyWith(
+              fontSize: 28,
+            ),
           ),
         ),
         const SizedBox(height: 20),
         Text(
           project['description'],
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-            height: 1.6,
-            color: AppColors.textSecondary,
+          style: GoogleFonts.firaCode(
+            textStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(
+              height: 1.6,
+              color: AppColors.textSecondary,
+            ),
           ),
           textAlign: alignment == CrossAxisAlignment.end ? TextAlign.right : TextAlign.left,
         ),
@@ -316,11 +333,13 @@ class _ProjectsSectionState extends State<ProjectsSection> {
           alignment: alignment == CrossAxisAlignment.end ? WrapAlignment.end : WrapAlignment.start,
           children: (project['techStack'] as List<String>).map((tech) {
             return Text(
-              tech,
-              style: const TextStyle(
-                color: AppColors.primary,
-                fontWeight: FontWeight.w600,
-                fontSize: 14,
+              '[$tech]',
+              style: GoogleFonts.firaCode(
+                textStyle: const TextStyle(
+                  color: AppColors.primary,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 14,
+                ),
               ),
             );
           }).toList(),
@@ -329,12 +348,16 @@ class _ProjectsSectionState extends State<ProjectsSection> {
         Row(
           mainAxisAlignment: alignment == CrossAxisAlignment.end ? MainAxisAlignment.end : MainAxisAlignment.start,
           children: [
-            if (project['github'] != null)
-              IconButton(
-                onPressed: () => launchUrl(Uri.parse(project['github'])),
-                icon: const Icon(Icons.code, color: Colors.white),
-                tooltip: 'View Source Code',
+            OutlinedButton.icon(
+              onPressed: () => launchUrl(Uri.parse('https://github.com/milan-sha')),
+              icon: const Icon(Icons.open_in_new, size: 16),
+              label: Text('<View Project />', style: GoogleFonts.firaCode()),
+              style: OutlinedButton.styleFrom(
+                foregroundColor: AppColors.primary,
+                side: const BorderSide(color: AppColors.primary),
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
               ),
+            ),
           ],
         ),
       ],
