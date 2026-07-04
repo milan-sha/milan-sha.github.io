@@ -3,7 +3,6 @@ import '../../core/theme/app_colors.dart';
 import '../widgets/hero_section.dart';
 import '../widgets/about_section.dart';
 import '../widgets/skills_section.dart';
-import '../widgets/experience_section.dart';
 import '../widgets/projects_section.dart';
 import '../widgets/certifications_section.dart';
 import '../widgets/github_section.dart';
@@ -24,7 +23,6 @@ class _HomePageState extends State<HomePage> {
     'home': GlobalKey(),
     'about': GlobalKey(),
     'skills': GlobalKey(),
-    'experience': GlobalKey(),
     'projects': GlobalKey(),
     'certifications': GlobalKey(),
     'github': GlobalKey(),
@@ -93,9 +91,6 @@ class _HomePageState extends State<HomePage> {
                 child: SizedBox(key: _sectionKeys['skills'], child: const SkillsSection()),
               ),
               SliverToBoxAdapter(
-                child: SizedBox(key: _sectionKeys['experience'], child: const ExperienceSection()),
-              ),
-              SliverToBoxAdapter(
                 child: SizedBox(key: _sectionKeys['projects'], child: const ProjectsSection()),
               ),
               SliverToBoxAdapter(
@@ -139,7 +134,6 @@ class _HomePageState extends State<HomePage> {
               _navItem('Home', 'home'),
               _navItem('About', 'about'),
               _navItem('Skills', 'skills'),
-              _navItem('Experience', 'experience'),
               _navItem('Projects', 'projects'),
               _navItem('Contact', 'contact'),
             ],

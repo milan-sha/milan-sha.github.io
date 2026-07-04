@@ -18,11 +18,11 @@ class _GithubSectionState extends State<GithubSection> {
   
   // Placeholder data - replace with actual API fetch later
   final Map<String, dynamic> _githubStats = {
-    'username': 'yourusername',
-    'public_repos': 42,
-    'followers': 120,
-    'following': 15,
-    'stars': 350,
+    'username': 'milan-sha',
+    'public_repos': 15,
+    'followers': 10,
+    'following': 5,
+    'stars': 20,
   };
 
   @override

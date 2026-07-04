@@ -16,44 +16,56 @@ class _ProjectsSectionState extends State<ProjectsSection> {
   bool _isVisible = false;
   String _selectedCategory = 'All';
 
-  final List<String> _categories = ['All', 'Flutter', '.NET', 'Cybersecurity', 'AI'];
+  final List<String> _categories = ['All', 'Flutter', '.NET', 'Cybersecurity', 'Fun Projects'];
 
   final List<Map<String, dynamic>> _projects = [
     {
-      'title': 'Secure Bank App',
+      'title': 'Smile Dental App',
       'category': 'Flutter',
-      'description': 'A highly secure banking application with end-to-end encryption, biometric authentication, and real-time transaction monitoring.',
-      'techStack': ['Flutter', 'Dart', 'Firebase', 'Encryption'],
-      'image': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
-      'github': 'https://github.com',
-      'live': 'https://example.com',
+      'description': 'A comprehensive dental clinic management and appointment booking application built with Flutter.',
+      'techStack': ['Flutter', 'Dart', 'Firebase'],
+      'image': 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
+      'github': 'https://github.com/milan-sha',
     },
     {
-      'title': 'Enterprise ERP System',
-      'category': '.NET',
-      'description': 'A comprehensive enterprise resource planning system built with ASP.NET Core, featuring a modular architecture and role-based access control.',
-      'techStack': ['ASP.NET Core', 'C#', 'SQL Server', 'Entity Framework'],
-      'image': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
-      'github': 'https://github.com',
-      'live': 'https://example.com',
+      'title': 'E-commerce App',
+      'category': 'Flutter',
+      'description': 'A full-featured e-commerce application with product catalog, shopping cart, and secure checkout.',
+      'techStack': ['Flutter', 'Dart', 'REST API', 'State Management'],
+      'image': 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
+      'github': 'https://github.com/milan-sha',
     },
     {
-      'title': 'Vulnerability Scanner',
+      'title': 'Password Checker App',
       'category': 'Cybersecurity',
-      'description': 'An automated network vulnerability scanner that identifies open ports, outdated software, and potential security risks based on OWASP guidelines.',
-      'techStack': ['Python', 'Nmap API', 'Socket', 'Regex'],
-      'image': 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
-      'github': 'https://github.com',
-      'live': null,
+      'description': 'An application that evaluates password strength and checks against known breached password databases.',
+      'techStack': ['Cybersecurity', 'Security Assessment'],
+      'image': 'https://images.unsplash.com/photo-1614064641913-6b110b471978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
+      'github': 'https://github.com/milan-sha',
     },
     {
-      'title': 'AI Sales Predictor',
-      'category': 'AI',
-      'description': 'A machine learning model that predicts future sales trends based on historical data, seasonal factors, and marketing spend.',
-      'techStack': ['Python', 'Pandas', 'Scikit-Learn', 'Matplotlib'],
-      'image': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
-      'github': 'https://github.com',
-      'live': 'https://example.com',
+      'title': 'Paper Cups Website PenTest',
+      'category': 'Cybersecurity',
+      'description': 'Conducted a comprehensive vulnerability assessment and penetration test for a paper cups and materials manufacturing website.',
+      'techStack': ['Pen Testing', 'Vulnerability Assessment', 'OWASP'],
+      'image': 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
+      'github': 'https://github.com/milan-sha',
+    },
+    {
+      'title': 'WiFi People Locating',
+      'category': 'Fun Projects',
+      'description': 'A fun experimental project utilizing WiFi signals and network packets to estimate people locations in a localized area.',
+      'techStack': ['Network Analysis', 'Python', 'WiFi Locating'],
+      'image': 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
+      'github': 'https://github.com/milan-sha',
+    },
+    {
+      'title': 'Enterprise Company Projects',
+      'category': '.NET',
+      'description': 'Developed and maintained various enterprise-level company projects using ASP.NET Core and related technologies.',
+      'techStack': ['ASP.NET Core', 'C#', 'SQL Server'],
+      'image': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
+      'github': 'https://github.com/milan-sha',
     },
   ];
 
@@ -322,18 +334,6 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                 icon: const Icon(Icons.code, color: Colors.white),
                 tooltip: 'View Source Code',
               ),
-            if (project['live'] != null) ...[
-              const SizedBox(width: 16),
-              ElevatedButton.icon(
-                onPressed: () => launchUrl(Uri.parse(project['live'])),
-                icon: const Icon(Icons.open_in_new, size: 16),
-                label: const Text('Live Demo'),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primary,
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                ),
-              ),
-            ],
           ],
         ),
       ],

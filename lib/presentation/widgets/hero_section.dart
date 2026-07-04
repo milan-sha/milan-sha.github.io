@@ -23,7 +23,7 @@ class HeroSection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Hello, I'm Milan",
+                "Hello, I'm Milan Sha",
                 style: Theme.of(context).textTheme.displayLarge?.copyWith(
                   fontSize: isMobile ? 40 : 64,
                   fontWeight: FontWeight.w900,

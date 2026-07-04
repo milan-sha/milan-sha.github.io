@@ -121,7 +121,7 @@ class _AboutSectionState extends State<AboutSection> {
         ).animate().fade(delay: 300.ms).slideY(begin: 0.1, end: 0),
         const SizedBox(height: 20),
         Text(
-          "I hold the Certified Ethical Hacker (CEH) certification, giving me a strong understanding of secure software development, ethical hacking, vulnerability assessment, penetration testing concepts, and cybersecurity best practices.",
+          "I hold the Certified Ethical Hacker (CEH) certification from EC-Council, giving me a strong understanding of secure software development, ethical hacking, vulnerability assessment, penetration testing concepts, and cybersecurity best practices.",
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(height: 1.6),
         ).animate().fade(delay: 400.ms).slideY(begin: 0.1, end: 0),
         const SizedBox(height: 20),
@@ -131,7 +131,7 @@ class _AboutSectionState extends State<AboutSection> {
         ).animate().fade(delay: 500.ms).slideY(begin: 0.1, end: 0),
         const SizedBox(height: 20),
         Text(
-          "I am a continuous learner who enjoys exploring emerging technologies and improving my engineering skills through hands-on development. My goal is to build impactful software while continuously growing as a developer.",
+          "I am a continuous learner who has learned to do fun projects, exploring emerging technologies and improving my engineering skills through hands-on development. My goal is to build impactful software while continuously growing as a developer.",
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
             color: AppColors.accent,
             fontStyle: FontStyle.italic,

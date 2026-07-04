@@ -23,9 +23,9 @@ class FooterSection extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                '© ${2026} Milan. All rights reserved.', // Hardcoded year or DateTime.now().year
-                style: TextStyle(
+              Text(
+                '© ${DateTime.now().year} Milan Sha. All rights reserved.',
+                style: const TextStyle(
                   color: AppColors.textSecondary,
                   fontSize: 14,
                 ),
