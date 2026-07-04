@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import '../../core/theme/app_colors.dart';
-import 'terminal_window.dart';
 import 'package:visibility_detector/visibility_detector.dart';
+import '../../../core/theme/app_colors.dart';
 
 class AboutSection extends StatefulWidget {
   const AboutSection({super.key});
@@ -102,22 +100,20 @@ class _AboutSectionState extends State<AboutSection> {
       ],
     );
   }
+
   Widget _buildTextContent() {
-    // Get isMobile from screen width since it's not passed down
-    final isMobile = MediaQuery.of(context).size.width < 768;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '<AboutMe />',
-          style: GoogleFonts.firaCode(
-            textStyle: Theme.of(context).textTheme.displayLarge?.copyWith(
-              color: AppColors.textPrimary,
-              fontWeight: FontWeight.bold,
-              fontSize: isMobile ? 32 : 48,
-            ),
+          "I am a passionate Software Engineer with expertise in Flutter, .NET, Database Management Systems, and Cybersecurity.",
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+            color: AppColors.textPrimary,
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            height: 1.5,
           ),
-        ).animate().fade(duration: 800.ms).slideX(begin: -0.2, end: 0),
+        ).animate().fade(delay: 200.ms).slideY(begin: 0.1, end: 0),
         const SizedBox(height: 20),
         Text(
           "I enjoy building scalable, secure, and user-friendly applications that solve real-world problems. I have developed multiple projects across different domains, including mobile applications, backend systems, web applications, and database-driven solutions.",
@@ -146,15 +142,22 @@ class _AboutSectionState extends State<AboutSection> {
   }
 
   Widget _buildImageOrDecoration() {
-    return TerminalWindow(
-      title: 'profile.jpg',
-      child: Container(
-        height: 400,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/profile.jpg'),
-            fit: BoxFit.cover,
+    return Container(
+      height: 400,
+      decoration: BoxDecoration(
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: AppColors.primary.withOpacity(0.5), width: 2),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.primary.withOpacity(0.2),
+            blurRadius: 30,
+            spreadRadius: 5,
           ),
+        ],
+        image: const DecorationImage(
+          image: AssetImage('assets/images/profile.jpg'),
+          fit: BoxFit.cover,
         ),
       ),
     ).animate().fade(duration: 800.ms, delay: 200.ms).scale(begin: const Offset(0.9, 0.9), duration: 800.ms);
