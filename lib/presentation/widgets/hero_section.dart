@@ -100,7 +100,7 @@ class HeroSection extends StatelessWidget {
                     child: const Text('View Projects', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                   ),
                   OutlinedButton(
-                    onPressed: () => launchUrl(Uri.parse('resume.pdf')),
+                    onPressed: () => launchUrl(Uri.parse('https://milan-sha.github.io/portfolio-web/resume.pdf')),
                     style: OutlinedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 20),
                       side: const BorderSide(color: AppColors.accent, width: 2),
