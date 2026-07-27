@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../core/theme/app_colors.dart';
 
 class HeroSection extends StatelessWidget {
-  const HeroSection({super.key});
+  final VoidCallback? onViewProjects;
+
+  const HeroSection({super.key, this.onViewProjects});
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +85,7 @@ class HeroSection extends StatelessWidget {
                 runSpacing: 20,
                 children: [
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: onViewProjects,
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 20),
                       backgroundColor: AppColors.primary,
@@ -90,13 +94,40 @@ class HeroSection extends StatelessWidget {
                     child: const Text('View Projects', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                   ),
                   OutlinedButton(
-                    onPressed: () {},
+                    onPressed: () => launchUrl(Uri.parse('resume.pdf')),
                     style: OutlinedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 20),
                       side: const BorderSide(color: AppColors.accent, width: 2),
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                     ),
                     child: const Text('Download Resume', style: TextStyle(color: AppColors.accent, fontSize: 18, fontWeight: FontWeight.bold)),
+                  ),
+                  const SizedBox(width: 8),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: AppColors.surfaceLight.withValues(alpha: 0.5),
+                      shape: BoxShape.circle,
+                    ),
+                    child: IconButton(
+                      onPressed: () => launchUrl(Uri.parse('https://linkedin.com/in/milansha2003')),
+                      icon: const FaIcon(FontAwesomeIcons.linkedin),
+                      color: AppColors.textSecondary,
+                      iconSize: 28,
+                      padding: const EdgeInsets.all(16),
+                    ),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: AppColors.surfaceLight.withValues(alpha: 0.5),
+                      shape: BoxShape.circle,
+                    ),
+                    child: IconButton(
+                      onPressed: () => launchUrl(Uri.parse('https://github.com/milan-sha')),
+                      icon: const FaIcon(FontAwesomeIcons.github),
+                      color: AppColors.textSecondary,
+                      iconSize: 28,
+                      padding: const EdgeInsets.all(16),
+                    ),
                   ),
                 ],
               ).animate().fade(delay: 1200.ms, duration: 800.ms).slideY(begin: 0.3, end: 0),

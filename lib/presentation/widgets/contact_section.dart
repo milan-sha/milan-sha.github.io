@@ -127,11 +127,9 @@ class _ContactSectionState extends State<ContactSection> {
         const SizedBox(height: 40),
         Row(
           children: [
-            _buildSocialIcon(FontAwesomeIcons.linkedin, 'https://linkedin.com/in/milan-sha'),
+            _buildSocialIcon(FontAwesomeIcons.linkedin, 'https://linkedin.com/in/milansha2003'),
             const SizedBox(width: 16),
             _buildSocialIcon(FontAwesomeIcons.github, 'https://github.com/milan-sha'),
-            const SizedBox(width: 16),
-            _buildSocialIcon(FontAwesomeIcons.twitter, 'https://twitter.com'),
           ],
         )
       ],

@@ -16,44 +16,38 @@ class _ProjectsSectionState extends State<ProjectsSection> {
   bool _isVisible = false;
   String _selectedCategory = 'All';
 
-  final List<String> _categories = ['All', 'Flutter', '.NET', 'Cybersecurity', 'Fun Projects'];
+  final List<String> _categories = ['All', 'Flutter', 'Cybersecurity', 'Fun Projects'];
 
   final List<Map<String, dynamic>> _projects = [
     {
       'title': 'Smile Dental App',
       'category': 'Flutter',
-      'description': 'A comprehensive dental clinic application to manage staff and medical equipments.',
+      'description': 'A comprehensive digital management platform for Smile Dental clinic, streamlining clinical workflows, sterilization tracking, and daily operations.',
       'techStack': ['Flutter', 'Dart', 'Firebase'],
     },
     {
-      'title': 'E-commerce App',
+      'title': 'E-Commerce Application',
       'category': 'Flutter',
-      'description': 'A full-featured e-commerce application with product catalog, shopping cart, and secure checkout.',
-      'techStack': ['Flutter', 'Dart', 'Hive', 'State Management'],
+      'description': 'A cross-platform mobile shopping platform that provides users with a smooth browsing and purchasing experience and a secure checkout process.',
+      'techStack': ['Flutter', 'Dart', 'State Management'],
     },
     {
-      'title': 'Password Strength Checker',
+      'title': 'Password Strength Tester',
       'category': 'Cybersecurity',
-      'description': 'An application that evaluates password strength and checks against known breached password databases.',
-      'techStack': ['Cybersecurity', 'Security Assessment'],
+      'description': 'A Python utility that evaluates brute-force and dictionary-attack resilience and returns actionable strength feedback.',
+      'techStack': ['Python', 'Security Assessment'],
     },
     {
-      'title': 'Paper Cups Website PenTest',
-      'category': 'Cybersecurity',
-      'description': 'Conducted a comprehensive vulnerability assessment and penetration test for a paper cups and materials manufacturing website.',
-      'techStack': ['Pen Testing', 'Vulnerability Assessment', 'OWASP'],
-    },
-    {
-      'title': 'WiFi People Locating',
+      'title': 'WI Guard',
       'category': 'Fun Projects',
-      'description': 'A fun experimental project utilizing WiFi signals and network packets to estimate people locations in a localized area.',
-      'techStack': ['Network Analysis', 'Python', 'WiFi Locating'],
+      'description': 'Advanced SOC dashboard transforming standard Wi-Fi routers into passive physical motion detectors using radio signal strength variances.',
+      'techStack': ['Python', 'Network Analysis'],
     },
     {
-      'title': 'Enterprise Company Projects',
-      'category': '.NET',
-      'description': 'Developed and maintained various enterprise-level company projects using ASP.NET Core and related technologies.',
-      'techStack': ['ASP.NET Core', 'C#', 'SQL Server'],
+      'title': 'Personal Portfolio Website',
+      'category': 'Flutter',
+      'description': 'A fully responsive personal portfolio web application featuring interactive animations, clean architecture, and CI/CD pipeline.',
+      'techStack': ['Flutter', 'Web', 'CI/CD'],
     },
   ];
 

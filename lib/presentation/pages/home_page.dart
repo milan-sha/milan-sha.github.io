@@ -82,7 +82,12 @@ class _HomePageState extends State<HomePage> {
             controller: _scrollController,
             slivers: [
               SliverToBoxAdapter(
-                child: SizedBox(key: _sectionKeys['home'], child: const HeroSection()),
+                child: SizedBox(
+                  key: _sectionKeys['home'], 
+                  child: HeroSection(
+                    onViewProjects: () => _scrollToSection('projects'),
+                  ),
+                ),
               ),
               SliverToBoxAdapter(
                 child: SizedBox(key: _sectionKeys['about'], child: const AboutSection()),
