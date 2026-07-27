@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../../core/theme/app_colors.dart';
 import '../widgets/hero_section.dart';
@@ -8,6 +9,7 @@ import '../widgets/certifications_section.dart';
 import '../widgets/github_section.dart';
 import '../widgets/contact_section.dart';
 import '../widgets/footer_section.dart';
+import '../widgets/particle_background.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -51,30 +53,48 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: Stack(
         children: [
-          // Background
+          // Background with Parallax and Particles
           Positioned.fill(
-            child: Container(
-              decoration: BoxDecoration(
-                color: AppColors.background,
-                image: const DecorationImage(
-                  image: NetworkImage('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop'),
-                  fit: BoxFit.cover,
-                  colorFilter: ColorFilter.mode(Colors.black54, BlendMode.darken),
-                ),
-              ),
-              child: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      AppColors.background.withOpacity(0.7),
-                      AppColors.background.withOpacity(0.95),
-                    ],
+            child: AnimatedBuilder(
+              animation: _scrollController,
+              builder: (context, child) {
+                // Calculate parallax offset
+                double offset = 0;
+                if (_scrollController.hasClients) {
+                  offset = _scrollController.offset * 0.3; // 30% speed for parallax
+                }
+                
+                return Transform.translate(
+                  offset: Offset(0, offset),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: AppColors.background,
+                      image: const DecorationImage(
+                        image: NetworkImage('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop'),
+                        fit: BoxFit.cover,
+                        colorFilter: ColorFilter.mode(Colors.black54, BlendMode.darken),
+                      ),
+                    ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            AppColors.background.withValues(alpha: 0.7),
+                            AppColors.background.withValues(alpha: 0.95),
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-              ),
+                );
+              }
             ),
+          ),
+          
+          Positioned.fill(
+            child: ParticleBackground(child: const SizedBox.expand()),
           ),
           
           // Main Content
@@ -126,24 +146,32 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildNavBar() {
-    return Container(
-      height: 80,
-      padding: const EdgeInsets.symmetric(horizontal: 40),
-      color: Colors.black.withOpacity(0.3), // Glassmorphism placeholder
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text('PORTFOLIO', style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.w900)),
-          Row(
+    return ClipRRect(
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+        child: Container(
+          height: 80,
+          padding: const EdgeInsets.symmetric(horizontal: 40),
+          decoration: BoxDecoration(
+            color: Colors.black.withValues(alpha: 0.3), // Glassmorphism background
+            border: Border(bottom: BorderSide(color: AppColors.surfaceLight.withValues(alpha: 0.3))),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _navItem('Home', 'home'),
-              _navItem('About', 'about'),
-              _navItem('Skills', 'skills'),
-              _navItem('Projects', 'projects'),
-              _navItem('Contact', 'contact'),
+              Text('PORTFOLIO', style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.w900)),
+              Row(
+                children: [
+                  _navItem('Home', 'home'),
+                  _navItem('About', 'about'),
+                  _navItem('Skills', 'skills'),
+                  _navItem('Projects', 'projects'),
+                  _navItem('Contact', 'contact'),
+                ],
+              )
             ],
-          )
-        ],
+          ),
+        ),
       ),
     );
   }

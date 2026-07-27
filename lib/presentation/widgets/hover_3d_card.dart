@@ -54,7 +54,8 @@ class _Hover3dCardState extends State<Hover3dCard> {
             ..rotateY(_x * (widget.depth / 100) * value);
 
           // Add a subtle scale effect
-          matrix.scaleByDouble(1.0 + (0.02 * value));
+          // ignore: deprecated_member_use
+          matrix.scale(1.0 + (0.02 * value));
 
           return Transform(
             alignment: FractionalOffset.center,

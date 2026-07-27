@@ -5,6 +5,7 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../core/theme/app_colors.dart';
+import 'glitch_text.dart';
 
 class HeroSection extends StatelessWidget {
   final VoidCallback? onViewProjects;
@@ -26,11 +27,14 @@ class HeroSection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                "Hello, I'm Milan Sha",
+              GlitchText(
+                text: "Hello, I'm Milan Sha",
                 style: Theme.of(context).textTheme.displayLarge?.copyWith(
                   fontSize: isMobile ? 40 : 64,
                   fontWeight: FontWeight.w900,
+                  shadows: [
+                    Shadow(color: AppColors.primary.withValues(alpha: 0.5), blurRadius: 20),
+                  ],
                 ),
               ).animate().fade(duration: 800.ms).slideY(begin: 0.3, end: 0),
               
@@ -89,6 +93,8 @@ class HeroSection extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 20),
                       backgroundColor: AppColors.primary,
+                      shadowColor: AppColors.primary,
+                      elevation: 15,
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                     ),
                     child: const Text('View Projects', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
