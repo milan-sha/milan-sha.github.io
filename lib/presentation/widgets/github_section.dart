@@ -5,6 +5,7 @@ import 'package:visibility_detector/visibility_detector.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../core/theme/app_colors.dart';
+import 'hover_3d_card.dart';
 
 class GithubSection extends StatefulWidget {
   const GithubSection({super.key});
@@ -51,7 +52,10 @@ class _GithubSectionState extends State<GithubSection> {
                 _buildTitle(isMobile),
                 const SizedBox(height: 60),
                 if (_isVisible)
-                  _buildGithubCard(isMobile)
+                  Hover3dCard(
+                    depth: 8.0,
+                    child: _buildGithubCard(isMobile),
+                  )
                       .animate()
                       .fade(duration: 800.ms)
                       .slideY(begin: 0.2, end: 0),

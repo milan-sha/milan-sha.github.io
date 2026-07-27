@@ -3,6 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 import '../../../core/theme/app_colors.dart';
+import 'hover_3d_card.dart';
 
 class SkillsSection extends StatefulWidget {
   const SkillsSection({super.key});
@@ -84,7 +85,10 @@ class _SkillsSectionState extends State<SkillsSection> {
                     ),
                     itemCount: _skillCategories.length,
                     itemBuilder: (context, index) {
-                      return _buildSkillCard(_skillCategories[index], index)
+                      return Hover3dCard(
+                        depth: 8.0, // Less depth for skill cards
+                        child: _buildSkillCard(_skillCategories[index], index),
+                      )
                           .animate()
                           .fade(delay: (100 * index).ms)
                           .slideY(begin: 0.2, end: 0);
