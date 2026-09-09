@@ -31,7 +31,7 @@ class ProfileRepository {
     ],
     portraitAsset: 'image/milan profile.jpeg',
     email: 'milanshamon@gmail.com',
-    resumeUrl: 'https://milan-sha.github.io/portfolio-web/resume.pdf',
+    resumeUrl: 'https://milan-sha.github.io/resume.pdf',
     githubUsername: 'milan-sha',
     destinations: [
       NavDestination(id: 'intro', label: 'Intro', tick: 'IN'),
