@@ -88288,7 +88288,7 @@ a08(a){if(this.f===a)return
 this.f=a
 this.av()},
 asb(){this.geD()
-return A.oq(A.cy("https://milan-sha.github.io/portfolio-web/resume.pdf",0,null),B.dB)},
+return A.oq(A.cy("https://milan-sha.github.io/resume.pdf",0,null),B.dB)},
 vS(){var s=0,r=A.O(t.H),q,p=this,o,n,m,l,k,j
 var $async$vS=A.P(function(a,b){if(a===1)return A.L(b,r)
 for(;;)switch(s){case 0:p.ax=p.at=null
