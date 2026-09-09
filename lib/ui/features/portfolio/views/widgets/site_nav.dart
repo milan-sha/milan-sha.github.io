@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 
 import '../../../../../domain/models/nav_destination.dart';
 import '../../../../core/theme/app_colors.dart';
-import '../../../../core/widgets/portrait_plate.dart';
 import '../../view_models/portfolio_view_model.dart';
 
 class SiteRail extends StatelessWidget {
@@ -31,21 +30,6 @@ class SiteRail extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              PortraitMark(asset: viewModel.profile.portraitAsset, size: 44),
-              const SizedBox(height: 14),
-              Text(
-                viewModel.profile.shortName,
-                style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                  fontSize: 28,
-                  color: AppColors.laterite,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                viewModel.profile.name.toUpperCase(),
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-              const SizedBox(height: 36),
               Expanded(
                 child: ListView(
                   children: [
@@ -174,15 +158,6 @@ class SiteTopBar extends StatelessWidget {
           ),
           child: Row(
             children: [
-              PortraitMark(asset: viewModel.profile.portraitAsset, size: 36),
-              const SizedBox(width: 12),
-              Text(
-                viewModel.profile.shortName,
-                style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                  fontSize: 22,
-                  color: AppColors.laterite,
-                ),
-              ),
               const Spacer(),
               IconButton(
                 tooltip: 'Open sections',
