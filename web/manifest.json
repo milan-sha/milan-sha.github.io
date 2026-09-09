@@ -1,12 +1,11 @@
 {
-    "name": "profile_web",
-    "short_name": "profile_web",
+    "name": "Milan Sha",
+    "short_name": "Milan Sha",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
-    "orientation": "portrait-primary",
+    "background_color": "#0C0B0A",
+    "theme_color": "#C45C3A",
+    "description": "Milan Sha — Flutter, .NET, and security-minded software.",
     "prefer_related_applications": false,
     "icons": [
         {

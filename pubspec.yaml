@@ -1,5 +1,5 @@
 name: profile_web
-description: "A new Flutter project."
+description: "Milan Sha — Flutter, .NET, and security-minded software."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -40,10 +40,9 @@ dependencies:
   go_router: ^17.3.0
   visibility_detector: ^0.4.0+2
   url_launcher: ^6.3.2
-  responsive_builder: ^0.7.1
-  lottie: ^3.3.3
   font_awesome_flutter: ^11.0.0
   http: ^1.6.0
+  provider: ^6.1.5
 
 dev_dependencies:
   flutter_test:
